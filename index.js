@@ -47,12 +47,14 @@ app.post('/', function (request, response) {
     var what = request.body.queryResult.parameters['what'];
     var who = request.body.queryResult.parameters['who'];
     var when = request.body.queryResult.parameters['when'];
+    var why = request.body.queryResult.parameters['why'];
+    var how = request.body.queryResult.parameters['how'];
     
     let action = (request.body.queryResult.action) ? request.body.queryResult.action: 'default';
     
     const actionHandlers = {
-        'what.who.when': () => {
-            let responseToUser = { fulfillmentText: obj[what][who][when]};
+        'what.who.when.why.how': () => {
+            let responseToUser = { fulfillmentText: obj[what][who][when][why][how]};
             sendResponse(responseToUser);
         },
         
